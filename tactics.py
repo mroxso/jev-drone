@@ -11,7 +11,7 @@ reflex layer in run.py owns safety regardless of what comes back.
 import os, threading, queue, time
 from typesafe_sdk import TypeSafeClient, Choice, Noul, Score
 
-MODEL = "jev-latest"
+MODEL = os.environ.get("JEV_MODEL", "jev-latest")
 
 # --- how the flight code reacts to a judgment -------------------------------
 THRESHOLDS = {

@@ -11,7 +11,7 @@ exceed 1/latency, while each individual decision is still 0.135s stale.
 import os, threading, time
 from typesafe_sdk import TypeSafeClient, Choice, Noul, Score
 
-MODEL = "jev-latest"
+MODEL = os.environ.get("JEV_MODEL", "jev-latest")
 
 THRESHOLDS = {
     "workers": 6,          # concurrent in-flight requests
