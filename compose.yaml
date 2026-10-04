@@ -1,0 +1,16 @@
+services:
+  jev-drone:
+    build: .
+    image: jev-drone
+    # Put TYPESAFE_API_KEY (and optionally JEV_MODEL, TYPESAFE_BASE_URL) in .env
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      MUJOCO_GL: egl
+    volumes:
+      - ./out:/app/out
+    # Override for runs, e.g.:
+    #   docker compose run --rm jev-drone python run.py --no-jev --fast --seconds 65 --seeds 0 1 2
+    #   docker compose run --rm jev-drone python run.py --seconds 65 --seeds 1 --video out/course.mp4
+    command: python run.py --seconds 65 --seeds 1
